@@ -1,32 +1,27 @@
 const API_key = "297f25c3c735ea24c5a2a9a2383ebe9c";
 const DEFAULT_VALUE = "--";
-
 const searchInput = document.querySelector("#search-input");
 const list = document.querySelector(".cardContainer");
-
 const cityName = document.querySelector(".city");
 const weatherState = document.querySelector(".weather");
-
 const weatherIcon = document.querySelector(".weather-icon");
 const temperature = document.querySelector(".temp");
 const minTemp = document.querySelector(".minTemp");
 const maxTemp = document.querySelector(".maxTemp");
 const form = document.querySelector("#search-form");
-
 const Sunrise = document.querySelector(".Sunrise");
 const Sunset = document.querySelector(".Sunset");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const InputValue = searchInput.value;
-
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${InputValue}&appid=${API_key}&units=metric&lang=vi`
-  )   
+  )
     .then(async (res) => {
       const data = await res.json();
 
-      const content = ` <div class="card">
+      const content = `<div class="card">
       <p class="city">${data.name} (${data.sys.country})</p>
       <p class="weather">${data.weather[0].description}</p>
         <img
